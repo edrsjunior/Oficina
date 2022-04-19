@@ -6,7 +6,7 @@ public class OrdemServico {
     private LocalDateTime dataPrevTermino;
     private LocalDateTime dataTermino;
     private String placaCarro;
-    private String situacao;
+    private char situacao;
 
     public int getNumeroOS() {
         return numeroOS;
@@ -38,10 +38,10 @@ public class OrdemServico {
     public void setPlacaCarro(String placaCarro) {
         this.placaCarro = placaCarro;
     }
-    public String getSituacao() {
+    public char getSituacao() {
         return situacao;
     }
-    public void setSituacao(String situacao) {
+    public void setSituacao(char situacao) {
         this.situacao = situacao;
     }
     
