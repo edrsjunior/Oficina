@@ -3,7 +3,7 @@ public class itemOS {
     private float preco;
     private int qtde;
 
-    
+    /*
     public itemOS(char tipoItem) {
         if ('P'==this.tipoItem) {
             return new itemOS('P');
@@ -12,6 +12,7 @@ public class itemOS {
             return new itemOS('S');
         }
     }
+    */
 
     
   
