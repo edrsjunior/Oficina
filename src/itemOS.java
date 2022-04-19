@@ -7,8 +7,6 @@ public class itemOS {
     private float preco;
     private int qtde;
 
-    Locale local = new Locale("pt","BR")
-
     public String getTipoItem() {
         return tipoItem;
     }
