@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class OrdemServico {
     private int numeroOS;
@@ -7,6 +8,13 @@ public class OrdemServico {
     private LocalDateTime dataTermino;
     private String placaCarro;
     private char situacao;
+    private ArrayList<itemOS> itens = new ArrayList<itemOS>();
+
+    
+    public OrdemServico() {
+        this.situacao = 'A';
+    }
+
 
     public int getNumeroOS() {
         return numeroOS;
@@ -59,5 +67,21 @@ public class OrdemServico {
     }
 
     
+    public boolean finalizar(){
+        if(situacao=='A'){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     
+    public boolean cancelar(){
+        if(situacao=='A'){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

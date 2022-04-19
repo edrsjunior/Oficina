@@ -3,6 +3,25 @@ public class itemOS {
     private float preco;
     private int qtde;
 
+    
+    public itemOS(char tipoItem) {
+        if ('P'==this.tipoItem) {
+            return new itemOS('P');
+        }
+        if ('S'==this.tipoItem) {
+            return new itemOS('S');
+        }
+    }
+
+    
+  
+    public itemOS(char tipoItem, float preco) {
+        this.tipoItem = tipoItem;
+        this.preco = preco;
+    }
+
+
+
     public char getTipoItem() {
         return tipoItem;
     }
