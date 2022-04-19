@@ -1,12 +1,12 @@
 public class itemOS {
-    private String tipoItem;
+    private char tipoItem;
     private float preco;
     private int qtde;
 
-    public String getTipoItem() {
+    public char getTipoItem() {
         return tipoItem;
     }
-    public void setTipoItem(String tipoItem) {
+    public void setTipoItem(char tipoItem) {
         this.tipoItem = tipoItem;
     }
     public float getPreco() {
