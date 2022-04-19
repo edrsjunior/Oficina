@@ -3,6 +3,8 @@ public class Peca {
     private String descricao;
     private float preco;
     private int qtdeEstoque;
+
+    
     public int getCodPeca() {
         return codPeca;
     }
