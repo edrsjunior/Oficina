@@ -1,4 +1,5 @@
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class operacoes {
     public static int selectMenu() {
@@ -73,13 +74,43 @@ public class operacoes {
     }
 
     public static Cliente cadastrarCliente() {
-        Cliente tempClient = new Cliente();
+        
 
+        /*
         tempClient.setNome(JOptionPane.showInputDialog(null, "NOME DO CLIENTE:"));
         tempClient.setCpf(JOptionPane.showInputDialog(null, "CPF DO CLIENTE:"));
         tempClient.setEndereco(JOptionPane.showInputDialog(null, "ENDEREÇO DO CLIENTE:"));
         tempClient.setFone(JOptionPane.showInputDialog(null, "TELEFONE DO CLIENTE:"));
+        */
 
-        return tempClient;
+        //CRIA MULTIPLOS CAMPOS PARA ACESSAR OS VALORES SEPARADOS
+        JTextField nome = new JTextField();
+        JTextField cpf = new JTextField();
+        JTextField endereco = new JTextField();
+        JTextField fone = new JTextField();
+        //=====================================================
+
+
+        //CRIA UM OBJETO MENSAGEM COM GERAL
+        Object[] message = {
+            "Nome: ", nome,
+            "CPF: ", cpf,
+            "Endereço", endereco,
+            "Fone: ", fone
+        };
+        //=====================================================
+
+        //CHAMA A JANELINHA COM UM OK OR CANCEL
+        int option = JOptionPane.showConfirmDialog(null, message, "INSERIR DADOS CLIENTES: ", JOptionPane.OK_CANCEL_OPTION);
+        
+        if (option == JOptionPane.OK_OPTION) {
+            Cliente tempClient = new Cliente(nome.getText(),cpf.getText(),endereco.getText(),fone.getText());
+            return tempClient;
+        }
+        else{
+            return null;
+        }
+
+        
     }
 }

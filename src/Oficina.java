@@ -20,7 +20,7 @@ public class Oficina {
     public void addCliente(Cliente cliente) {
         BD_Clientes.add(cliente);
     }
-    public Cliente consultarClientebyCPF(String cpfSearch) {
+    public Cliente findClientebyCPF(String cpfSearch) {
         
         Iterator<Cliente> iterator = BD_Clientes.iterator();
         while (iterator.hasNext()) {
@@ -32,10 +32,46 @@ public class Oficina {
 
         return null;
     }
-   
     
+    public boolean clientExists(String cpfSearch) {
+        Iterator<Cliente> iterator = BD_Clientes.iterator();
+        while (iterator.hasNext()) {
+            Cliente c = iterator.next();
+            if (c.getCpf().equals(cpfSearch)) {
+                return true;
+            }
+        }
 
-    
+        return false;
+    }
+
+    public boolean deleteClienteByCpf(String cpfToDelete) {
+        Iterator<Cliente> iterator = BD_Clientes.iterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().getCpf().equals(cpfToDelete)) {
+                iterator.remove();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean editClienteByCpf(String cpfSearch,String nomeEdit, String cpfEdit, String enderecoEdit, String foneEdit) {
+        
+        Iterator<Cliente> iterator = BD_Clientes.iterator();
+        while (iterator.hasNext()) {
+            Cliente c = iterator.next();
+            if (c.getCpf().equals(cpfSearch)) {
+                c.setNome(nomeEdit);
+                c.setCpf(cpfEdit);
+                c.setEndereco(enderecoEdit);
+                c.setFone(foneEdit);
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     
 }
