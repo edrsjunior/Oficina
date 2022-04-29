@@ -45,6 +45,9 @@ public class App {
                     JOptionPane.showMessageDialog(null, "CPF NÃO ENCONTRADO");
                 }
             }
+            if (option == 5) {
+                JOptionPane.showMessageDialog(null, raimundoAutos.getAllClientes());
+            }
             option = JOptionPane.showConfirmDialog(null, "Voltar", "VOLTAR", JOptionPane.YES_NO_OPTION);
             
             }while(option == 0);

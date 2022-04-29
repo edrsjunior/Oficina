@@ -56,8 +56,8 @@ public class Cliente {
         "============================\n"
         +"NOME: "+this.getNome()+"\n"
         +"CPF: "+this.getCpf()+"\n"
-        +"ENDERECO "+this.getEndereco()+"\n"
-        +"FONE "+this.getFone()+"\n"
+        +"ENDERECO: "+this.getEndereco()+"\n"
+        +"FONE: "+this.getFone()+"\n"
         +"===========================";
 
         return dados;

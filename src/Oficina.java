@@ -73,5 +73,16 @@ public class Oficina {
         return false;
     }
 
-    
+    public String getAllClientes() {
+        
+        String allClients = "===========TODOS CLIENTES:=========\n\n";
+
+        Iterator<Cliente> iterator = BD_Clientes.iterator();
+        while (iterator.hasNext()) {
+            Cliente c = iterator.next();
+            allClients += c.toString() +"\n";
+        }
+
+        return allClients;
+    }
 }
