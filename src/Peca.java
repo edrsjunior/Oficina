@@ -5,6 +5,15 @@ public class Peca {
     private int qtdeEstoque;
 
     
+    
+
+    public Peca(int codPeca, String descricao, float preco, int qtdeEstoque) {
+        this.codPeca = codPeca;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.qtdeEstoque = qtdeEstoque;
+    }
+    
     public int getCodPeca() {
         return codPeca;
     }

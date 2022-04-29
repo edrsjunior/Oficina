@@ -71,4 +71,15 @@ public class operacoes {
 
         return Integer.parseInt(option);
     }
+
+    public static Cliente cadastrarCliente() {
+        Cliente tempClient = new Cliente();
+
+        tempClient.setNome(JOptionPane.showInputDialog(null, "NOME DO CLIENTE:"));
+        tempClient.setCpf(JOptionPane.showInputDialog(null, "CPF DO CLIENTE:"));
+        tempClient.setEndereco(JOptionPane.showInputDialog(null, "ENDEREÇO DO CLIENTE:"));
+        tempClient.setFone(JOptionPane.showInputDialog(null, "TELEFONE DO CLIENTE:"));
+
+        return tempClient;
+    }
 }
