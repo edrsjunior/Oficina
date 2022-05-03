@@ -2,6 +2,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -79,14 +80,6 @@ public class operacoes {
     }
 
     public static Cliente cadastrarCliente() {
-        
-
-        /*
-        tempClient.setNome(JOptionPane.showInputDialog(null, "NOME DO CLIENTE:"));
-        tempClient.setCpf(JOptionPane.showInputDialog(null, "CPF DO CLIENTE:"));
-        tempClient.setEndereco(JOptionPane.showInputDialog(null, "ENDEREÇO DO CLIENTE:"));
-        tempClient.setFone(JOptionPane.showInputDialog(null, "TELEFONE DO CLIENTE:"));
-        */
 
         //CRIA MULTIPLOS CAMPOS PARA ACESSAR OS VALORES SEPARADOS
         JTextField nome = new JTextField();
@@ -154,7 +147,7 @@ public class operacoes {
     }
 
     //CADASTRAR PEÇA
-    public static OrdemServico newOS(int incrementOSCod) {
+    public static OrdemServico newOS(int incrementOSCod,ArrayList<itemOS> BD_ItemOS) {
       
         //CRIA MULTIPLOS CAMPOS PARA ACESSAR OS VALORES SEPARADOS
         JTextField placa = new JTextField();

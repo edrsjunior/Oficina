@@ -43,6 +43,13 @@ public class itemOS {
     public void setQtde(int qtde) {
         this.qtde = qtde;
     }
+    public int getCod() {
+        return cod;
+    }
+    public void setCod(int cod) {
+        this.cod = cod;
+    }
+    
 
     
 }
