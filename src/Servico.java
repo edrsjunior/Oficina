@@ -5,6 +5,16 @@ public class Servico {
     private String descricao;
     private float preco;
     private Instant tempoExecucao;
+
+    
+
+    public Servico(int codServico, String descricao, float preco, Instant tempoExecucao) {
+        this.codServico = codServico;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.tempoExecucao = tempoExecucao;
+    }
+    
     public int getCodServico() {
         return codServico;
     }
