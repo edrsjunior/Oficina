@@ -69,7 +69,60 @@ public class App {
             }
             if (option == 3) {
                 System.out.println("GERENCIAR SERVICOS");
-                option = operacoes.gerenciarPecasORServices();
+                while(option != 6){
+                    option = operacoes.gerenciarPecasORServices();
+                    if (option == 1) {
+                        raimundoAutos.addServico(operacoes.cadastrarServico());
+                    }
+                    if (option == 2) {
+                        Servico sFinded = raimundoAutos.findServicebyCode(Integer.parseInt(JOptionPane.showInputDialog(null, "CODE TO SEARCH")));
+                        if (sFinded == null) {
+                            JOptionPane.showMessageDialog(null, "SERVIÇO NÃO ENCONTRADO");
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, sFinded.toString());
+                        }
+                    }
+                    if (option == 3) {
+                        if(raimundoAutos.deleteServiceByCode(Integer.parseInt(JOptionPane.showInputDialog(null, "CODE TO DELETE")))){
+                            JOptionPane.showMessageDialog(null, "DELETADO COM SUCESSO");
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "CODE NÃO ENCONTRADO");
+                        }
+                    }
+                    if (option == 4) {
+                        int codeEdit = Integer.parseInt(JOptionPane.showInputDialog(null, "CPF TO EDIT"));
+                        if(raimundoAutos.serviceExists(codeEdit)){
+                            Servico s = operacoes.cadastrarServico();
+                            
+    
+                            if(raimundoAutos.editServiceByCode(codeEdit, s.getDescricao(), s.getPreco(),s.getTempoExecucao())){
+                                JOptionPane.showMessageDialog(null, "ALTERADO COM SUCESSO");
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null, "INTERNAL ERROR");
+                            }
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "CODE NÃO ENCONTRADO");
+                        }
+                    }
+                    if (option == 5) {
+                        JOptionPane.showMessageDialog(null, raimundoAutos.getAllServices());
+                    }
+                    if(option == 6)
+                        if(JOptionPane.showConfirmDialog(null, "Certeza que deseja voltar?", "VOLTAR", JOptionPane.YES_NO_OPTION)==0){
+                            option = 0;
+                            break;
+                        }
+                        else{
+                            option = 0;
+                        }
+                        
+                    }
+
+                
             }
             if (option == 4) {
                 System.out.println("GERENCIAR ORDEM DE SERVICO");
