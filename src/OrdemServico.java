@@ -11,8 +11,25 @@ public class OrdemServico {
     private ArrayList<itemOS> itens = new ArrayList<itemOS>();
 
     
-    public OrdemServico() {
+    
+
+    public OrdemServico(int numeroOS, LocalDateTime dataPrevTermino,
+            String placaCarro, ArrayList<itemOS> itensInput) {
+        
+        
+        this.numeroOS = numeroOS;
+        this.dataOS = LocalDateTime.now();
+        this.dataPrevTermino = dataPrevTermino;
+        this.placaCarro = placaCarro;
         this.situacao = 'A';
+        this.itens = itensInput;
+    }
+
+
+    public OrdemServico(int numeroOS) {
+        this.situacao = 'A';
+        this.numeroOS = numeroOS;
+        this.dataOS = LocalDateTime.now();
     }
 
 
@@ -53,6 +70,11 @@ public class OrdemServico {
         this.situacao = situacao;
     }
     
+    public void addItens(itemOS item) {
+        this.itens.add(item);
+    }
+
+
     @Override
     public String toString() {
         return "OrdemServico" 

@@ -1,5 +1,6 @@
 public class itemOS {
     private char tipoItem;
+    private int cod;
     private float preco;
     private int qtde;
 
@@ -16,9 +17,10 @@ public class itemOS {
 
     
   
-    public itemOS(char tipoItem, float preco) {
+    public itemOS(char tipoItem, int code, float preco) {
         this.tipoItem = tipoItem;
         this.preco = preco;
+        this.cod = code;
     }
 
 

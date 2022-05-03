@@ -13,8 +13,12 @@ public class Oficina {
     ArrayList<Cliente> BD_Clientes = new ArrayList<Cliente>();
     ArrayList<Servico> BD_Servico = new ArrayList<Servico>();
     ArrayList<OrdemServico> BD_OS = new ArrayList<OrdemServico>();
-
-
+    
+    //É NECESSARIO INICIAR O VALOR DAS OS PARA PUXAR E INCREMENTAR FUTURAMENTE
+    public Oficina() {
+        BD_OS.add(new OrdemServico(0));
+    }
+    //----------------------------------------------------------------
     public ArrayList<Cliente> getBD_Clientes() {
         return BD_Clientes;
     }
@@ -23,6 +27,9 @@ public class Oficina {
     }
     public void addServico(Servico service) {
         BD_Servico.add(service);
+    }
+    public void openOS(OrdemServico os) {
+        BD_OS.add(os);
     }
 
 

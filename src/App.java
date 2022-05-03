@@ -127,6 +127,9 @@ public class App {
             if (option == 4) {
                 System.out.println("GERENCIAR ORDEM DE SERVICO");
                 option = operacoes.gerenciarOS();
+                if (option == 1) {
+                    raimundoAutos.openOS(operacoes.newOS());
+                }
             }
             if (option == 5) {
                 System.out.println("CONSULTAR TOTAL VENDIDO EM UM PERIODO");

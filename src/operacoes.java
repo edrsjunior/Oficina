@@ -1,4 +1,7 @@
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -142,6 +145,45 @@ public class operacoes {
         if (option == JOptionPane.OK_OPTION) {
             Servico tempService = new Servico(Integer.parseInt(codServico.getText()),desc.getText(),Float.parseFloat(preco.getText()),LocalTime.parse(tempoExec.getText()));
             return tempService;
+        }
+        else{
+            return null;
+        }
+
+        
+    }
+
+    //CADASTRAR PEÇA
+    public static OrdemServico newOS(int incrementOSCod) {
+      
+        //CRIA MULTIPLOS CAMPOS PARA ACESSAR OS VALORES SEPARADOS
+        JTextField placa = new JTextField();
+        JTextField dataEnd = new JTextField();
+        JTextField pecaToAdd = new JTextField();
+        //=====================================================
+
+
+        //CRIA UM OBJETO MENSAGEM COM GERAL
+        Object[] message = {
+            "Placa do Veiculo: ", placa,
+            "Data Termino Previa(XX/XX/XXXX HH:mm): ", dataEnd
+        };
+        //=====================================================
+
+        //CHAMA A JANELINHA COM UM OK OR CANCEL
+        int option = JOptionPane.showConfirmDialog(null, message, "INSERIR DADOS OS: ", JOptionPane.OK_CANCEL_OPTION);
+        
+        DateTimeFormatter formaterDate = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        LocalDateTime dataEndFormated = LocalDateTime.parse(dataEnd.getText(),formaterDate);
+
+        if (option == JOptionPane.OK_OPTION) {
+            System.out.println("GET ITENS OS");
+            message = {"ID DA PEÇA ou SERVIÇO: ", pecaToAdd};
+            option = JOptionPane.showConfirmDialog(null, message,JOptionPane.OK_CANCEL_OPTION);
+            while()
+
+            OrdemServico tempOS = new OrdemServico(incrementOSCod++,dataEndFormated,placa.getText());
+            return tempOS;
         }
         else{
             return null;
