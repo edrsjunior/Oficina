@@ -39,7 +39,6 @@ public class Peca {
         this.qtdeEstoque = qtdeEstoque;
     }
 
-    /************ APRESENTAR PEÇA *******/
     @Override
         public String toString() {
         String dados = 
@@ -52,6 +51,5 @@ public class Peca {
 
         return dados;
     }
-    /************ APRESENTAR PEÇA *******/
 
 }

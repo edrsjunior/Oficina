@@ -63,7 +63,7 @@ public class App {
                 
                 
             }
-            /************** CADASTRAR PEÇAS ***********/
+
             if (option == 2) {
                 while(option != 6){
                     option = operacoes.gerenciarPecasORServices("GERENCIAR PEÇAS");
@@ -71,7 +71,7 @@ public class App {
                             raimundoAutos.addPeca(operacoes.cadastrarPeca());
                         }
                         if (option == 2) {
-                            Peca pFinded = raimundoAutos.findPecaCodigo(Integer.parseInt(JOptionPane.showInputDialog(null, "CODE TO SEARCH")));
+                            Peca pFinded = raimundoAutos.findPecaByCodigo(Integer.parseInt(JOptionPane.showInputDialog(null, "CODE TO SEARCH")));
                             if (pFinded == null) {
                                 JOptionPane.showMessageDialog(null, "PEÇA NÃO ENCONTRADA");
                             }
@@ -79,9 +79,17 @@ public class App {
                                 JOptionPane.showMessageDialog(null, pFinded.toString());
                             }
                         }
+                        if (option == 3) {
+                            if(raimundoAutos.deletePecaByCode(Integer.parseInt(JOptionPane.showInputDialog(null, "CODE TO DELETE")))){
+                                JOptionPane.showMessageDialog(null, "DELETADO COM SUCESSO");
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null, "CODE NÃO ENCONTRADO");
+                            }
+                        }
                     }
                 }
-            /************** FIM CADASTRAR PEÇAS ***********/
+
             /*
             if (option == 2) {
                 System.out.println("GERENCIAR PEÇAS");

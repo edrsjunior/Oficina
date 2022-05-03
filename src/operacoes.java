@@ -116,7 +116,7 @@ public class operacoes {
         
     }
     
-    /****************** CADASTRAR PEÇA **************/
+
     public static Peca cadastrarPeca() {
         
         //CRIA MULTIPLOS CAMPOS PARA ACESSAR OS VALORES SEPARADOS
@@ -143,7 +143,6 @@ public class operacoes {
             return null;
         }
     }
-    /****************** FIM CADASTRAR PEÇA **************/
 
     //CADASTRAR PEÇA
     public static Servico cadastrarServico() {

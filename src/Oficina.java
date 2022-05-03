@@ -21,12 +21,9 @@ public class Oficina {
     public void addCliente(Cliente cliente) {
         BD_Clientes.add(cliente);
     }
-    /***************   ADICIONAR PEÇAS *************************/
-    
     public void addPeca(Peca peca) {
         BD_Pecas.add(peca);
     }
-    /***************   ADICIONAR PEÇAS *************************/
     public void addServico(Servico service) {
         BD_Servico.add(service);
     }
@@ -45,8 +42,7 @@ public class Oficina {
         return null;
     }
      
-    /***************   FIND PEÇAS *************************/
-     public Peca findPecaCodigo(int pecaCodigoSearch) {
+     public Peca findPecaByCodigo(int pecaCodigoSearch) {
         
         Iterator<Peca> iterator = BD_Pecas.iterator();
         while (iterator.hasNext()) {
@@ -57,7 +53,6 @@ public class Oficina {
         }
         return null;
     }
-    /***************   FIM FIND PEÇAS *************************/
 
     public Servico findServicebyCode(int codeSearch) {
         
@@ -107,6 +102,17 @@ public class Oficina {
         return false;
     }
 
+    public boolean deletePecaByCode(int codeToDelete) {
+        Iterator<Peca> iterator = BD_Pecas.iterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().getCodPeca()==codeToDelete) {
+                iterator.remove();
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean deleteServiceByCode(int codeToDelete) {
         Iterator<Servico> iterator = BD_Servico.iterator();
         while (iterator.hasNext()) {
@@ -117,7 +123,7 @@ public class Oficina {
         }
         return false;
     }
-
+    
     public boolean editClienteByCpf(String cpfSearch,String nomeEdit, String cpfEdit, String enderecoEdit, String foneEdit) {
         
         Iterator<Cliente> iterator = BD_Clientes.iterator();
