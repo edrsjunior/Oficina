@@ -1,3 +1,5 @@
+import java.time.LocalTime;
+
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -30,7 +32,7 @@ public class operacoes {
         return Integer.parseInt(option);
     }
 
-    public static int gerenciarPecasORServices() {
+    public static int gerenciarPecasORServices(String menuContext) {
         String message = 
         "1 - Cadastrar \n"
         +"2 - Consultar por código \n"
@@ -38,8 +40,8 @@ public class operacoes {
         +"4 - Editar \n"
         +"5 - Listar todos os cadastros \n"
         +"6 - Voltar \n";
-
-        String option = JOptionPane.showInputDialog(null, message);
+        
+        String option = JOptionPane.showInputDialog(null,message, menuContext,JOptionPane.OK_CANCEL_OPTION);
 
         return Integer.parseInt(option);
     }
@@ -106,6 +108,40 @@ public class operacoes {
         if (option == JOptionPane.OK_OPTION) {
             Cliente tempClient = new Cliente(nome.getText(),cpf.getText(),endereco.getText(),fone.getText());
             return tempClient;
+        }
+        else{
+            return null;
+        }
+
+        
+    }
+
+    //CADASTRAR PEÇA
+    public static Servico cadastrarServico() {
+      
+        //CRIA MULTIPLOS CAMPOS PARA ACESSAR OS VALORES SEPARADOS
+        JTextField codServico = new JTextField();
+        JTextField desc = new JTextField();
+        JTextField preco = new JTextField();
+        JTextField tempoExec = new JTextField();
+        //=====================================================
+
+
+        //CRIA UM OBJETO MENSAGEM COM GERAL
+        Object[] message = {
+            "Codigo do Serviço: ", codServico,
+            "Descrição: ", desc,
+            "preco", preco,
+            "Tempo Estimado para execução: ", tempoExec
+        };
+        //=====================================================
+
+        //CHAMA A JANELINHA COM UM OK OR CANCEL
+        int option = JOptionPane.showConfirmDialog(null, message, "INSERIR DADOS SERVIÇO: ", JOptionPane.OK_CANCEL_OPTION);
+        
+        if (option == JOptionPane.OK_OPTION) {
+            Servico tempService = new Servico(Integer.parseInt(codServico.getText()),desc.getText(),Float.parseFloat(preco.getText()),LocalTime.parse(tempoExec.getText()));
+            return tempService;
         }
         else{
             return null;
