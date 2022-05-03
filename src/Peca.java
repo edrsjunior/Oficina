@@ -39,6 +39,19 @@ public class Peca {
         this.qtdeEstoque = qtdeEstoque;
     }
 
-    
+    /************ APRESENTAR PEÇA *******/
+    @Override
+        public String toString() {
+        String dados = 
+        "============================\n"
+        +"NOME: "+this.getCodPeca()+"\n"
+        +"CPF: "+this.getDescricao()+"\n"
+        +"ENDERECO: "+this.getPreco()+"\n"
+        +"FONE: "+this.getQtdeEstoque()+"\n"
+        +"===========================";
+
+        return dados;
+    }
+    /************ APRESENTAR PEÇA *******/
 
 }

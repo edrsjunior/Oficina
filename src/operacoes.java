@@ -115,6 +115,35 @@ public class operacoes {
 
         
     }
+    
+    /****************** CADASTRAR PEÇA **************/
+    public static Peca cadastrarPeca() {
+        
+        //CRIA MULTIPLOS CAMPOS PARA ACESSAR OS VALORES SEPARADOS
+        JTextField codPeca = new JTextField();
+        JTextField descricao = new JTextField();
+        JTextField preco = new JTextField();
+        JTextField qtdeEstoque = new JTextField();
+        
+        //CRIA UM OBJETO MENSAGEM COM GERAL
+        Object[] message = {
+            "Código : ", codPeca,
+            "Descrição: ", descricao,
+            "Preço", preco,
+            "Quantidade Estoque: ", qtdeEstoque
+        };
+         
+        //CHAMA A JANELINHA COM UM OK OR CANCEL
+        int option = JOptionPane.showConfirmDialog(null, message, "INSERIR DADOS DA PEÇA: ", JOptionPane.OK_CANCEL_OPTION);
+        if (option == JOptionPane.OK_OPTION) {
+            Peca tempPeca = new Peca(Integer.parseInt(codPeca.getText()), descricao.getText(), Integer.parseInt(preco.getText()), Integer.parseInt(qtdeEstoque.getText()));
+            return tempPeca;
+        }
+        else{
+            return null;
+        }
+    }
+    /****************** FIM CADASTRAR PEÇA **************/
 
     //CADASTRAR PEÇA
     public static Servico cadastrarServico() {
