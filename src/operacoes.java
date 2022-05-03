@@ -32,7 +32,7 @@ public class operacoes {
         return Integer.parseInt(option);
     }
 
-    public static int gerenciarPecasORServices() {
+    public static int gerenciarPecasORServices(String menuContext) {
         String message = 
         "1 - Cadastrar \n"
         +"2 - Consultar por código \n"
@@ -40,8 +40,8 @@ public class operacoes {
         +"4 - Editar \n"
         +"5 - Listar todos os cadastros \n"
         +"6 - Voltar \n";
-
-        String option = JOptionPane.showInputDialog(null, message);
+        
+        String option = JOptionPane.showInputDialog(null,message, menuContext,JOptionPane.OK_CANCEL_OPTION);
 
         return Integer.parseInt(option);
     }

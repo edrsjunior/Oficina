@@ -65,12 +65,12 @@ public class App {
             }
             if (option == 2) {
                 System.out.println("GERENCIAR PEÇAS");
-                option = operacoes.gerenciarPecasORServices();
+                option = operacoes.gerenciarPecasORServices("PEÇAS");
             }
             if (option == 3) {
                 System.out.println("GERENCIAR SERVICOS");
                 while(option != 6){
-                    option = operacoes.gerenciarPecasORServices();
+                    option = operacoes.gerenciarPecasORServices("SERVIÇOS");
                     if (option == 1) {
                         raimundoAutos.addServico(operacoes.cadastrarServico());
                     }
@@ -92,7 +92,7 @@ public class App {
                         }
                     }
                     if (option == 4) {
-                        int codeEdit = Integer.parseInt(JOptionPane.showInputDialog(null, "CPF TO EDIT"));
+                        int codeEdit = Integer.parseInt(JOptionPane.showInputDialog(null, "CODE TO EDIT"));
                         if(raimundoAutos.serviceExists(codeEdit)){
                             Servico s = operacoes.cadastrarServico();
                             
