@@ -13,7 +13,7 @@ public class Peca {
         this.preco = preco;
         this.qtdeEstoque = qtdeEstoque;
     }
-    
+
     public int getCodPeca() {
         return codPeca;
     }
@@ -43,10 +43,10 @@ public class Peca {
         public String toString() {
         String dados = 
         "============================\n"
-        +"NOME: "+this.getCodPeca()+"\n"
-        +"CPF: "+this.getDescricao()+"\n"
-        +"ENDERECO: "+this.getPreco()+"\n"
-        +"FONE: "+this.getQtdeEstoque()+"\n"
+        +"CÓDIGO: "+this.getCodPeca()+"\n"
+        +"DESCRIÇÃO: "+this.getDescricao()+"\n"
+        +"PREÇO: "+this.getPreco()+"\n"
+        +"ESTOQUE: "+this.getQtdeEstoque()+"\n"
         +"===========================";
 
         return dados;

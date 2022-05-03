@@ -87,6 +87,22 @@ public class App {
                                 JOptionPane.showMessageDialog(null, "CODE NÃO ENCONTRADO");
                             }
                         }
+                        if (option == 4) {
+                            int pecaEdit = Integer.parseInt(JOptionPane.showInputDialog(null, "CODIGO TO EDIT"));
+                            if(raimundoAutos.pecaExists(pecaEdit)){
+                                Peca p = operacoes.cadastrarPeca();
+
+                                if(raimundoAutos.editPecaByCode(pecaEdit, p.getDescricao(), p.getPreco(),p.getQtdeEstoque())){
+                                    JOptionPane.showMessageDialog(null, "ALTERADO COM SUCESSO");
+                                }
+                                else{
+                                    JOptionPane.showMessageDialog(null, "INTERNAL ERROR");
+                                }
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null, "CPF NÃO ENCONTRADO");
+                            }
+                        }
                     }
                 }
 

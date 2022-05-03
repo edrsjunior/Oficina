@@ -79,6 +79,18 @@ public class Oficina {
         return false;
     }
 
+    public boolean pecaExists(int pecaEdit) {
+        Iterator<Peca> iterator = BD_Pecas.iterator();
+        while (iterator.hasNext()) {
+            Peca p = iterator.next();
+            if (p.getCodPeca() == pecaEdit) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
     public boolean serviceExists(int codeSearch) {
         Iterator<Servico> iterator = BD_Servico.iterator();
         while (iterator.hasNext()) {
@@ -134,6 +146,23 @@ public class Oficina {
                 c.setCpf(cpfEdit);
                 c.setEndereco(enderecoEdit);
                 c.setFone(foneEdit);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean editPecaByCode(int codPecaEdit, String descricaoEdit, float precoEdit, int qtdeEstoqueEdit) {
+        
+        Iterator<Peca> iterator = BD_Pecas.iterator();
+        while (iterator.hasNext()) {
+            Peca p = iterator.next();
+            if (p.getCodPeca() == codPecaEdit) {
+                // O CÓDIGO DA PEÇA PODERÁ SER ALTERADO????
+                p.setDescricao(descricaoEdit);
+                p.setPreco(precoEdit);
+                p.setQtdeEstoque(qtdeEstoqueEdit);
                 return true;
             }
         }
