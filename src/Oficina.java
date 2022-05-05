@@ -240,13 +240,13 @@ public class Oficina {
         while (iterator.hasNext()) {
             itemOS it = iterator.next();
             if (it.getTipoItem().toLowerCase().equals("s")) {
-                if(!serviceExists(it.getCod())) {
+                if(serviceExists(it.getCod()) == false) {
                     System.err.println("O SERVIÇO "+it.getCod()+" NÃO EXISTE");
                     return false;
                 }
             }
             if(it.getTipoItem().toLowerCase().equals("p")){
-                if(!pecaExists(it.getCod())) {
+                if(pecaExists(it.getCod())==false) {
                     System.err.println("A PEÇA "+it.getCod()+" NÃO EXISTE");
                     return false;
                 }

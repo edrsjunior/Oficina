@@ -127,7 +127,7 @@ public class operacoes {
             "Codigo do Serviço: ", codServico,
             "Descrição: ", desc,
             "preco", preco,
-            "Tempo Estimado para execução: ", tempoExec
+            "Tempo Estimado para execução(HH:mm): ", tempoExec
         };
         //=====================================================
 
@@ -188,7 +188,6 @@ public class operacoes {
         JTextField dataEnd = new JTextField();
         JTextField pecaToAdd = new JTextField();
         JTextField typeItem = new JTextField();
-        JTextField preco = new JTextField();
         JTextField qntd = new JTextField();
         //=====================================================
 
@@ -210,18 +209,18 @@ public class operacoes {
             System.out.println("GET ITENS OS");
             message = new Object[]{
                 "CODIGO DO ITEM/SERVIÇO: ", pecaToAdd,
-                "Serviço=A ou Peça=P: ", typeItem,
-                "Preço:", preco,
+                "Serviço=S ou Peça=P: ", typeItem,
                 "Quantidade", qntd
             };
             ArrayList<itemOS> itensToAdd = new ArrayList<itemOS>();
             option = JOptionPane.showConfirmDialog(null, message,"INFORMAÇÔES DO ITEM",JOptionPane.OK_CANCEL_OPTION);
-            itensToAdd.add(new itemOS(typeItem.getText(), Integer.parseInt(pecaToAdd.getText()), Float.parseFloat(preco.getText())));
+            itensToAdd.add(new itemOS(typeItem.getText(), Integer.parseInt(pecaToAdd.getText()), Integer.parseInt(qntd.getText())));
 
-            while(option == JOptionPane.OK_OPTION)
+            while(option == 0)
             {
                 option = JOptionPane.showConfirmDialog(null, message,"INFORMAÇÔES DO ITEM",JOptionPane.OK_CANCEL_OPTION);
-                itensToAdd.add(new itemOS(typeItem.getText(), Integer.parseInt(pecaToAdd.getText()), Float.parseFloat(preco.getText())));
+                itensToAdd.add(new itemOS(typeItem.getText(), Integer.parseInt(pecaToAdd.getText()), Integer.parseInt(qntd.getText())));
+                option = JOptionPane.showConfirmDialog(null, "DESEJAR ADICIONAR MAIS ITENS?", "ITENS", JOptionPane.YES_NO_OPTION);
             }
 
             OrdemServico tempOS = new OrdemServico(dataEndFormated,placa.getText(),itensToAdd);

@@ -1,5 +1,6 @@
 import java.text.NumberFormat;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class Servico {
@@ -45,13 +46,15 @@ public class Servico {
     @Override
     public String toString() {
         NumberFormat formaterMoeda = NumberFormat.getCurrencyInstance(Locale.getDefault());
+        DateTimeFormatter formaterTime = DateTimeFormatter.ofPattern("HH:mm");
 
         String dados = 
         "============================\n"
         +"CODE: "+this.getCodServico()+"\n"
         +"DESC: "+this.getDescricao()+"\n"
         +"PREÇO: "+formaterMoeda.format(this.getPreco())+"\n"
-        +"TEMPO ESTIMADO DE EXECUÇÃO: "+this.getTempoExecucao().toString()+"\n"
+        +"TEMPO ESTIMADO DE EXECUÇÃO(HH:mm): \n"
+        +this.getTempoExecucao().format(formaterTime)+"\n"
         +"===========================";
 
         return dados;
