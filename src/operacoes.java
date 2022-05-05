@@ -215,7 +215,7 @@ public class operacoes {
             ArrayList<itemOS> itensToAdd = new ArrayList<itemOS>();
             option = JOptionPane.showConfirmDialog(null, message,"INFORMAÇÔES DO ITEM",JOptionPane.OK_CANCEL_OPTION);
             itensToAdd.add(new itemOS(typeItem.getText(), Integer.parseInt(pecaToAdd.getText()), Integer.parseInt(qntd.getText())));
-
+            option = JOptionPane.showConfirmDialog(null, "DESEJAR ADICIONAR MAIS ITENS?", "ITENS", JOptionPane.YES_NO_OPTION);
             while(option == 0)
             {
                 option = JOptionPane.showConfirmDialog(null, message,"INFORMAÇÔES DO ITEM",JOptionPane.OK_CANCEL_OPTION);

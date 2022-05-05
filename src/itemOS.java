@@ -4,9 +4,10 @@ public class itemOS {
     private int qtde;
     
   
-    public itemOS(String tipoItem, int code, float preco) {
+    public itemOS(String tipoItem, int code, int quantidade) {
         this.tipoItem = tipoItem;
         this.cod = code;
+        this.qtde = quantidade;
     }
 
 

@@ -250,6 +250,12 @@ public class Oficina {
                     System.err.println("A PEÇA "+it.getCod()+" NÃO EXISTE");
                     return false;
                 }
+                int qntdEstoque = findPecabyCode(it.getCod()).getQtdeEstoque();
+                System.out.println("EST:"+qntdEstoque+" SOL:"+it.getQtde());
+                if (qntdEstoque < it.getQtde()) {
+                    System.err.println("NÃO TEM A QUANTIDADE DE PEÇAS DISPONIVEIS, ESTOQUE ATUAL: "+findPecabyCode(it.getCod()).getQtdeEstoque());
+                    return false;
+                }
             }
         }
         return true;
