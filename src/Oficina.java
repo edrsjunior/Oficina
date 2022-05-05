@@ -175,13 +175,13 @@ public class Oficina {
             if (it.getTipoItem().toLowerCase().equals("s")) {
                 if(!serviceExists(it.getCod())) {
                     return false;
-                    System.out.println("O SERVIÇO "+it.getCod()+" NÃO EXISTE");
+                    System.err.println("O SERVIÇO "+it.getCod()+" NÃO EXISTE");
                 }
             }
             if(it.getTipoItem().toLowerCase().equals("p")){
                 if(!pecaExists(it.getCod())) {
                     return false;
-                    System.out.println("A PEÇA "+it.getCod()+" NÃO EXISTE");
+                    System.err.println("A PEÇA "+it.getCod()+" NÃO EXISTE");
                 }
             }
         }
