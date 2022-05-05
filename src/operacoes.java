@@ -203,7 +203,7 @@ public class operacoes {
         //CHAMA A JANELINHA COM UM OK OR CANCEL
         int option = JOptionPane.showConfirmDialog(null, message, "INSERIR DADOS OS: ", JOptionPane.OK_CANCEL_OPTION);
         
-        DateTimeFormatter formaterDate = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        DateTimeFormatter formaterDate = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         LocalDateTime dataEndFormated = LocalDateTime.parse(dataEnd.getText(),formaterDate);
 
         if (option == JOptionPane.OK_OPTION) {
