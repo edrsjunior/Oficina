@@ -147,12 +147,15 @@ public class operacoes {
     }
 
     //CADASTRAR PEÇA
-    public static OrdemServico newOS(int incrementOSCod,ArrayList<itemOS> BD_ItemOS) {
+    public static OrdemServico newOS() {
       
         //CRIA MULTIPLOS CAMPOS PARA ACESSAR OS VALORES SEPARADOS
         JTextField placa = new JTextField();
         JTextField dataEnd = new JTextField();
         JTextField pecaToAdd = new JTextField();
+        JTextField typeItem = new JTextField();
+        JTextField preco = new JTextField();
+        JTextField qntd = new JTextField();
         //=====================================================
 
 
@@ -171,11 +174,23 @@ public class operacoes {
 
         if (option == JOptionPane.OK_OPTION) {
             System.out.println("GET ITENS OS");
-            message = {"ID DA PEÇA ou SERVIÇO: ", pecaToAdd};
-            option = JOptionPane.showConfirmDialog(null, message,JOptionPane.OK_CANCEL_OPTION);
-            while()
+            message = new Object[]{
+                "CODIGO DO ITEM/SERVIÇO: ", pecaToAdd,
+                "Serviço=A ou Peça=P: ", typeItem,
+                "Preço:", preco,
+                "Quantidade", qntd
+            };
+            ArrayList<itemOS> itensToAdd = new ArrayList<itemOS>();
+            option = JOptionPane.showConfirmDialog(null, message,"INFORMAÇÔES DO ITEM",JOptionPane.OK_CANCEL_OPTION);
+            itensToAdd.add(new itemOS(typeItem.getText(), Integer.parseInt(pecaToAdd.getText()), Float.parseFloat(preco.getText())));
 
-            OrdemServico tempOS = new OrdemServico(incrementOSCod++,dataEndFormated,placa.getText());
+            while(option == JOptionPane.OK_OPTION)
+            {
+                option = JOptionPane.showConfirmDialog(null, message,"INFORMAÇÔES DO ITEM",JOptionPane.OK_CANCEL_OPTION);
+                itensToAdd.add(new itemOS(typeItem.getText(), Integer.parseInt(pecaToAdd.getText()), Float.parseFloat(preco.getText())));
+            }
+
+            OrdemServico tempOS = new OrdemServico(dataEndFormated,placa.getText(),itensToAdd);
             return tempOS;
         }
         else{

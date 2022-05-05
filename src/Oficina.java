@@ -28,9 +28,7 @@ public class Oficina {
     public void addServico(Servico service) {
         BD_Servico.add(service);
     }
-    public void openOS(OrdemServico os) {
-        BD_OS.add(os);
-    }
+    
 
 
     public Cliente findClientebyCPF(String cpfSearch) {
@@ -58,6 +56,8 @@ public class Oficina {
 
         return null;
     }
+
+    
     
     public boolean clientExists(String cpfSearch) {
         Iterator<Cliente> iterator = BD_Clientes.iterator();
@@ -162,5 +162,32 @@ public class Oficina {
         }
 
         return allServices;
+    }
+
+    public boolean openOS(OrdemServico os) {
+
+        ArrayList<itemOS> checklist = new ArrayList<itemOS>();
+        checklist = os.getItens();
+
+        Iterator<itemOS> iterator = checklist.iterator();
+        while (iterator.hasNext()) {
+            itemOS it = iterator.next();
+            if (it.getTipoItem().toLowerCase().equals("s")) {
+                if(!serviceExists(it.getCod())) {
+                    return false;
+                    System.out.println("O SERVIÇO "+it.getCod()+" NÃO EXISTE");
+                }
+            }
+            if(it.getTipoItem().toLowerCase().equals("p")){
+                if(!pecaExists(it.getCod())) {
+                    return false;
+                    System.out.println("A PEÇA "+it.getCod()+" NÃO EXISTE");
+                }
+            }
+        }
+
+
+            
+       
     }
 }
