@@ -1,7 +1,6 @@
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -147,6 +146,41 @@ public class operacoes {
     }
 
     //CADASTRAR PEÇA
+    public static Peca cadastrarPeca() {
+      
+        //CRIA MULTIPLOS CAMPOS PARA ACESSAR OS VALORES SEPARADOS
+        JTextField codServico = new JTextField();
+        JTextField desc = new JTextField();
+        JTextField preco = new JTextField();
+        JTextField estoque = new JTextField();
+        //=====================================================
+
+
+        //CRIA UM OBJETO MENSAGEM COM GERAL
+        Object[] message = {
+            "Codigo da Peca: ", codServico,
+            "Descrição: ", desc,
+            "preco", preco,
+            "Estoque: ", estoque
+        };
+        //=====================================================
+
+        //CHAMA A JANELINHA COM UM OK OR CANCEL
+        int option = JOptionPane.showConfirmDialog(null, message, "INSERIR DADOS DA PEÇA: ", JOptionPane.OK_CANCEL_OPTION);
+        
+        if (option == JOptionPane.OK_OPTION) {
+            Peca tempPeca = new Peca(Integer.parseInt(codServico.getText()),desc.getText(),Float.parseFloat(preco.getText()),Integer.parseInt(estoque.getText()));
+            return tempPeca;
+        }
+        else{
+            return null;
+        }
+
+        
+    }
+    //-----------------------------------------
+
+
     public static OrdemServico newOS() {
       
         //CRIA MULTIPLOS CAMPOS PARA ACESSAR OS VALORES SEPARADOS
