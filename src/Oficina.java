@@ -28,8 +28,8 @@ public class Oficina {
     public void addServico(Servico service) {
         BD_Servico.add(service);
     }
-    public void openOS(OrdemServico os) {
-        BD_OS.add(os);
+    public void addPeca(Peca pc) {
+        BD_Pecas.add(pc);
     }
 
 
@@ -58,6 +58,21 @@ public class Oficina {
 
         return null;
     }
+
+    public Peca findPecabyCode(int codeSearch) {
+        
+        Iterator<Peca> iterator = BD_Pecas.iterator();
+        while (iterator.hasNext()) {
+            Peca p = iterator.next();
+            if (p.getCodPeca() == codeSearch) {
+                return p;
+            }
+        }
+
+        return null;
+    }
+
+    
     
     public boolean clientExists(String cpfSearch) {
         Iterator<Cliente> iterator = BD_Clientes.iterator();
@@ -83,6 +98,18 @@ public class Oficina {
         return false;
     }
 
+    public boolean pecaExists(int codeSearch) {
+        Iterator<Peca> iterator = BD_Pecas.iterator();
+        while (iterator.hasNext()) {
+            Peca p = iterator.next();
+            if (p.getCodPeca()==codeSearch) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public boolean deleteClienteByCpf(String cpfToDelete) {
         Iterator<Cliente> iterator = BD_Clientes.iterator();
         while (iterator.hasNext()) {
@@ -98,6 +125,17 @@ public class Oficina {
         Iterator<Servico> iterator = BD_Servico.iterator();
         while (iterator.hasNext()) {
             if (iterator.next().getCodServico()==codeToDelete) {
+                iterator.remove();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean deletePecaByCode(int codeToDelete) {
+        Iterator<Peca> iterator = BD_Pecas.iterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().getCodPeca()==codeToDelete) {
                 iterator.remove();
                 return true;
             }
@@ -138,6 +176,22 @@ public class Oficina {
         return false;
     }
 
+    public boolean editPecaByCode(int codPeca, String descricao, float preco, int qntdAlter) {
+        
+        Iterator<Peca> iterator = BD_Pecas.iterator();
+        while (iterator.hasNext()) {
+            Peca p = iterator.next();
+            if (p.getCodPeca() == codPeca) {
+                p.setDescricao(descricao);
+                p.setPreco(preco);
+                p.setQtdeEstoque(qntdAlter);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public String getAllClientes() {
         
         String allClients = "===========TODOS CLIENTES:=========\n\n";
@@ -162,5 +216,52 @@ public class Oficina {
         }
 
         return allServices;
+    }
+
+    public String getAllPecas() {
+        
+        String allPecas = "===========TODAS PECAS:=========\n\n";
+
+        Iterator<Peca> iterator = BD_Pecas.iterator();
+        while (iterator.hasNext()) {
+            Peca p = iterator.next();
+            allPecas += p.toString() +"\n";
+        }
+
+        return allPecas;
+    }
+
+    public boolean openOS(OrdemServico os) {
+
+        ArrayList<itemOS> checklist = new ArrayList<itemOS>();
+        checklist = os.getItens();
+
+        Iterator<itemOS> iterator = checklist.iterator();
+        while (iterator.hasNext()) {
+            itemOS it = iterator.next();
+            if (it.getTipoItem().toLowerCase().equals("s")) {
+                if(serviceExists(it.getCod()) == false) {
+                    System.err.println("O SERVIÇO "+it.getCod()+" NÃO EXISTE");
+                    return false;
+                }
+            }
+            if(it.getTipoItem().toLowerCase().equals("p")){
+                if(pecaExists(it.getCod())==false) {
+                    System.err.println("A PEÇA "+it.getCod()+" NÃO EXISTE");
+                    return false;
+                }
+                ;
+                
+                if (findPecabyCode(it.getCod()).getQtdeEstoque() < it.getQtde()) {
+                    System.err.println("NÃO TEM A QUANTIDADE DE PEÇAS DISPONIVEIS, ESTOQUE ATUAL: "+findPecabyCode(it.getCod()).getQtdeEstoque());
+                    return false;
+                }
+            }
+        }
+        return true;
+
+
+            
+       
     }
 }

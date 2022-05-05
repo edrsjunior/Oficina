@@ -1,7 +1,7 @@
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -79,14 +79,6 @@ public class operacoes {
     }
 
     public static Cliente cadastrarCliente() {
-        
-
-        /*
-        tempClient.setNome(JOptionPane.showInputDialog(null, "NOME DO CLIENTE:"));
-        tempClient.setCpf(JOptionPane.showInputDialog(null, "CPF DO CLIENTE:"));
-        tempClient.setEndereco(JOptionPane.showInputDialog(null, "ENDEREÇO DO CLIENTE:"));
-        tempClient.setFone(JOptionPane.showInputDialog(null, "TELEFONE DO CLIENTE:"));
-        */
 
         //CRIA MULTIPLOS CAMPOS PARA ACESSAR OS VALORES SEPARADOS
         JTextField nome = new JTextField();
@@ -135,7 +127,7 @@ public class operacoes {
             "Codigo do Serviço: ", codServico,
             "Descrição: ", desc,
             "preco", preco,
-            "Tempo Estimado para execução: ", tempoExec
+            "Tempo Estimado para execução(HH:mm): ", tempoExec
         };
         //=====================================================
 
@@ -154,12 +146,49 @@ public class operacoes {
     }
 
     //CADASTRAR PEÇA
-    public static OrdemServico newOS(int incrementOSCod) {
+    public static Peca cadastrarPeca() {
+      
+        //CRIA MULTIPLOS CAMPOS PARA ACESSAR OS VALORES SEPARADOS
+        JTextField codServico = new JTextField();
+        JTextField desc = new JTextField();
+        JTextField preco = new JTextField();
+        JTextField estoque = new JTextField();
+        //=====================================================
+
+
+        //CRIA UM OBJETO MENSAGEM COM GERAL
+        Object[] message = {
+            "Codigo da Peca: ", codServico,
+            "Descrição: ", desc,
+            "preco", preco,
+            "Estoque: ", estoque
+        };
+        //=====================================================
+
+        //CHAMA A JANELINHA COM UM OK OR CANCEL
+        int option = JOptionPane.showConfirmDialog(null, message, "INSERIR DADOS DA PEÇA: ", JOptionPane.OK_CANCEL_OPTION);
+        
+        if (option == JOptionPane.OK_OPTION) {
+            Peca tempPeca = new Peca(Integer.parseInt(codServico.getText()),desc.getText(),Float.parseFloat(preco.getText()),Integer.parseInt(estoque.getText()));
+            return tempPeca;
+        }
+        else{
+            return null;
+        }
+
+        
+    }
+    //-----------------------------------------
+
+
+    public static OrdemServico newOS() {
       
         //CRIA MULTIPLOS CAMPOS PARA ACESSAR OS VALORES SEPARADOS
         JTextField placa = new JTextField();
         JTextField dataEnd = new JTextField();
         JTextField pecaToAdd = new JTextField();
+        JTextField typeItem = new JTextField();
+        JTextField qntd = new JTextField();
         //=====================================================
 
 
@@ -173,16 +202,28 @@ public class operacoes {
         //CHAMA A JANELINHA COM UM OK OR CANCEL
         int option = JOptionPane.showConfirmDialog(null, message, "INSERIR DADOS OS: ", JOptionPane.OK_CANCEL_OPTION);
         
-        DateTimeFormatter formaterDate = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        DateTimeFormatter formaterDate = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         LocalDateTime dataEndFormated = LocalDateTime.parse(dataEnd.getText(),formaterDate);
 
         if (option == JOptionPane.OK_OPTION) {
             System.out.println("GET ITENS OS");
-            message = {"ID DA PEÇA ou SERVIÇO: ", pecaToAdd};
-            option = JOptionPane.showConfirmDialog(null, message,JOptionPane.OK_CANCEL_OPTION);
-            while()
+            message = new Object[]{
+                "CODIGO DO ITEM/SERVIÇO: ", pecaToAdd,
+                "Serviço=S ou Peça=P: ", typeItem,
+                "Quantidade", qntd
+            };
+            ArrayList<itemOS> itensToAdd = new ArrayList<itemOS>();
+            option = JOptionPane.showConfirmDialog(null, message,"INFORMAÇÔES DO ITEM",JOptionPane.OK_CANCEL_OPTION);
+            itensToAdd.add(new itemOS(typeItem.getText(), Integer.parseInt(pecaToAdd.getText()), Integer.parseInt(qntd.getText())));
+            option = JOptionPane.showConfirmDialog(null, "DESEJAR ADICIONAR MAIS ITENS?", "ITENS", JOptionPane.YES_NO_OPTION);
+            while(option == 0)
+            {
+                option = JOptionPane.showConfirmDialog(null, message,"INFORMAÇÔES DO ITEM",JOptionPane.OK_CANCEL_OPTION);
+                itensToAdd.add(new itemOS(typeItem.getText(), Integer.parseInt(pecaToAdd.getText()), Integer.parseInt(qntd.getText())));
+                option = JOptionPane.showConfirmDialog(null, "DESEJAR ADICIONAR MAIS ITENS?", "ITENS", JOptionPane.YES_NO_OPTION);
+            }
 
-            OrdemServico tempOS = new OrdemServico(incrementOSCod++,dataEndFormated,placa.getText());
+            OrdemServico tempOS = new OrdemServico(dataEndFormated,placa.getText(),itensToAdd);
             return tempOS;
         }
         else{

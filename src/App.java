@@ -65,7 +65,63 @@ public class App {
             }
             if (option == 2) {
                 System.out.println("GERENCIAR PEÇAS");
-                option = operacoes.gerenciarPecasORServices("PEÇAS");
+                /********************************************* */
+                while(option != 6){
+                    option = operacoes.gerenciarPecasORServices("PEÇAS");
+                    if (option == 1) {
+                        raimundoAutos.addPeca(operacoes.cadastrarPeca());
+                    }
+                    if (option == 2) {
+                        Peca pFinded = raimundoAutos.findPecabyCode(Integer.parseInt(JOptionPane.showInputDialog(null, "CODE TO SEARCH")));
+                        if (pFinded == null) {
+                            JOptionPane.showMessageDialog(null, "PECA NÃO ENCONTRADO");
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, pFinded.toString());
+                        }
+                    }
+                    if (option == 3) {
+                        if(raimundoAutos.deletePecaByCode(Integer.parseInt(JOptionPane.showInputDialog(null, "CODE TO DELETE")))){
+                            JOptionPane.showMessageDialog(null, "DELETADO COM SUCESSO");
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "CODE NÃO ENCONTRADO");
+                        }
+                    }
+                    if (option == 4) {
+                        int codeEdit = Integer.parseInt(JOptionPane.showInputDialog(null, "CODE TO EDIT"));
+                        if(raimundoAutos.pecaExists(codeEdit)){
+                            Peca p = operacoes.cadastrarPeca();
+                            
+    
+                            if(raimundoAutos.editPecaByCode(codeEdit, p.getDescricao(), p.getPreco(),p.getQtdeEstoque())){
+                                JOptionPane.showMessageDialog(null, "ALTERADO COM SUCESSO");
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null, "INTERNAL ERROR");
+                            }
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "CODE NÃO ENCONTRADO");
+                        }
+                    }
+                    if (option == 5) {
+                        JOptionPane.showMessageDialog(null, raimundoAutos.getAllPecas());
+                    }
+                    if(option == 6)
+                        if(JOptionPane.showConfirmDialog(null, "Certeza que deseja voltar?", "VOLTAR", JOptionPane.YES_NO_OPTION)==0){
+                            option = 0;
+                            break;
+                        }
+                        else{
+                            option = 0;
+                        }
+                        
+                    }
+                /********************************************** */ 
+
+
+                
             }
             if (option == 3) {
                 System.out.println("GERENCIAR SERVICOS");
@@ -128,7 +184,13 @@ public class App {
                 System.out.println("GERENCIAR ORDEM DE SERVICO");
                 option = operacoes.gerenciarOS();
                 if (option == 1) {
-                    raimundoAutos.openOS(operacoes.newOS());
+                    if (raimundoAutos.openOS(operacoes.newOS())) {
+                        JOptionPane.showMessageDialog(null, "OS CRIADA");
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "OS NÃO CRIADA");
+                    }
+                    
                 }
             }
             if (option == 5) {

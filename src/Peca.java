@@ -1,3 +1,6 @@
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class Peca {
     private int codPeca;
     private String descricao;
@@ -39,6 +42,19 @@ public class Peca {
         this.qtdeEstoque = qtdeEstoque;
     }
 
-    
+    @Override
+    public String toString() {
+        NumberFormat formaterMoeda = NumberFormat.getCurrencyInstance(Locale.getDefault());
+
+        String dados = 
+        "============================\n"
+        +"CODE: "+this.getCodPeca()+"\n"
+        +"DESC: "+this.getDescricao()+"\n"
+        +"PREÇO: "+formaterMoeda.format(this.getPreco())+"\n"
+        +"QUANTIDADE EM ESTOQUE: "+this.getQtdeEstoque()+"\n"
+        +"===========================";
+
+        return dados;
+    }
 
 }

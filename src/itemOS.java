@@ -1,41 +1,22 @@
 public class itemOS {
-    private char tipoItem;
+    private String tipoItem;
     private int cod;
-    private float preco;
     private int qtde;
-
-    /*
-    public itemOS(char tipoItem) {
-        if ('P'==this.tipoItem) {
-            return new itemOS('P');
-        }
-        if ('S'==this.tipoItem) {
-            return new itemOS('S');
-        }
-    }
-    */
-
     
   
-    public itemOS(char tipoItem, int code, float preco) {
+    public itemOS(String tipoItem, int code, int quantidade) {
         this.tipoItem = tipoItem;
-        this.preco = preco;
         this.cod = code;
+        this.qtde = quantidade;
     }
 
 
 
-    public char getTipoItem() {
+    public String getTipoItem() {
         return tipoItem;
     }
-    public void setTipoItem(char tipoItem) {
+    public void setTipoItem(String tipoItem) {
         this.tipoItem = tipoItem;
-    }
-    public float getPreco() {
-        return preco;
-    }
-    public void setPreco(float preco) {
-        this.preco = preco;
     }
     public int getQtde() {
         return qtde;
@@ -43,6 +24,13 @@ public class itemOS {
     public void setQtde(int qtde) {
         this.qtde = qtde;
     }
+    public int getCod() {
+        return cod;
+    }
+    public void setCod(int cod) {
+        this.cod = cod;
+    }
+    
 
     
 }

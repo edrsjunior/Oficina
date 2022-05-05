@@ -13,11 +13,9 @@ public class OrdemServico {
     
     
 
-    public OrdemServico(int numeroOS, LocalDateTime dataPrevTermino,
+    public OrdemServico(LocalDateTime dataPrevTermino,
             String placaCarro, ArrayList<itemOS> itensInput) {
         
-        
-        this.numeroOS = numeroOS;
         this.dataOS = LocalDateTime.now();
         this.dataPrevTermino = dataPrevTermino;
         this.placaCarro = placaCarro;
@@ -72,6 +70,15 @@ public class OrdemServico {
     
     public void addItens(itemOS item) {
         this.itens.add(item);
+    }
+
+    public ArrayList<itemOS> getItens() {
+        return itens;
+    }
+
+
+    public void setItens(ArrayList<itemOS> itens) {
+        this.itens = itens;
     }
 
 
