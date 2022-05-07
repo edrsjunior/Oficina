@@ -110,6 +110,29 @@ public class Oficina {
         return false;
     }
 
+    public boolean serviceORPecaHasOS(int cod) {
+        Iterator<OrdemServico> iteratorOS = BD_OS.iterator();
+        Iterator<itemOS> iteratorItens;
+        int cont=0;
+
+        while (iteratorOS.hasNext()) {
+            iteratorItens = iteratorOS.next().getItens().iterator();
+            while (iteratorItens.hasNext()) {
+                if (iteratorItens.next().getCod() == cod) {
+                    cont++;
+                }
+            }
+                
+        }
+
+        if (cont > 0) {
+            return true;
+        }
+        
+        return false;
+        
+    }
+
     public boolean deleteClienteByCpf(String cpfToDelete) {
         Iterator<Cliente> iterator = BD_Clientes.iterator();
         while (iterator.hasNext()) {
@@ -122,22 +145,27 @@ public class Oficina {
     }
 
     public boolean deleteServiceByCode(int codeToDelete) {
-        Iterator<Servico> iterator = BD_Servico.iterator();
-        while (iterator.hasNext()) {
-            if (iterator.next().getCodServico()==codeToDelete) {
-                iterator.remove();
-                return true;
+        if (serviceORPecaHasOS(codeToDelete) == false) {
+            Iterator<Servico> iterator = BD_Servico.iterator();
+            while (iterator.hasNext()) {
+                if (iterator.next().getCodServico()==codeToDelete) {
+                    iterator.remove();
+                    return true;
+                }
             }
+            
         }
         return false;
     }
 
     public boolean deletePecaByCode(int codeToDelete) {
-        Iterator<Peca> iterator = BD_Pecas.iterator();
-        while (iterator.hasNext()) {
-            if (iterator.next().getCodPeca()==codeToDelete) {
-                iterator.remove();
-                return true;
+        if (serviceORPecaHasOS(codeToDelete) == false) {
+            Iterator<Peca> iterator = BD_Pecas.iterator();
+            while (iterator.hasNext()) {
+                if (iterator.next().getCodPeca()==codeToDelete) {
+                    iterator.remove();
+                    return true;
+                }
             }
         }
         return false;
